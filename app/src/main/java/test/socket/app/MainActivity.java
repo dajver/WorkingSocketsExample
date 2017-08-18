@@ -76,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void onSendClick() {
-        mWebSocketClient.send(editText.getText().toString());
-        editText.setText("");
+        if(!mWebSocketClient.getConnection().isClosed()) {
+            mWebSocketClient.send(editText.getText().toString());
+            editText.setText("");
+        } else {
+            connectWebSocket();
+        }
     }
 }
