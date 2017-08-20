@@ -17,6 +17,5 @@ wss.on('connection', function(ws) {
 
     ws.on('close', function() {
         console.log('websocket connection close');
-        connections = new Map();
     });
 });
